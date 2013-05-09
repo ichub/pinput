@@ -3,16 +3,16 @@ window.onload = function() {
 		this.keyStates = new Array(256);
 	};
 
-	pinput.prototype.removeWhiteSpace = function(string) {
+	removeWhiteSpace = function(string) {
 		return string.replace(/\s+/, '');
 	};
 
-	pinput.prototype.stripWhiteSpace = function(string) {
+	stripWhiteSpace = function(string) {
 		return string.replace(/\s+/, ' ');
 	};
 
-	pinput.prototype.convertStringToKeycode = function(key) {
-		key = this.removeWhiteSpace(key);
+	convertStringToKeycode = function(key) {
+		key = removeWhiteSpace(key);
 		key = key.toUpperCase();
 
 		switch(key) {
@@ -52,25 +52,25 @@ window.onload = function() {
 		return key.charCodeAt(0);
 	};
 
-	pinput.prototype.convertStringToKeyCombo = function(keyCombo) {
-		keyComboString = this.stripWhiteSpace(keyComboString);
+	convertStringToKeyCombo = function(keyCombo) {
+		keyComboString = stripWhiteSpace(keyComboString);
 		var combo = keyComboString.split(' ');
 
 		for (var i = 0; i < combo.length; i++) {
-			combo[i] = this.convertStringToKeycode(combo[i]);
+			combo[i] = convertStringToKeycode(combo[i]);
 		};
 		return combo;
 	};
 
 	pinput.prototype.isKeyDown = function(key) {
 		if (typeof key == "string")
-			key = this.convertStringToKeycode(key);
+			key = convertStringToKeycode(key);
 
 		return this.keyStates[key];
 	};
 
 	pinput.prototype.isKeyComboDown = function(keyCombo) {
-		var combo = this.convertStringToKeyCombo(keyCombo);
+		var combo = convertStringToKeyCombo(keyCombo);
 		for (var i = 0; i < combo.length; i++) {
 			if (!this.isKeyDown(combo[i])) {
 				return false;
