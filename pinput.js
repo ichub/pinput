@@ -1,6 +1,7 @@
 window.onload = function() {
 	var pinput = function() {
 		this.keyStates = new Array(256);
+		this.mouseStates = new Array(3);
 	};
 
 	removeWhiteSpace = function(string) {
@@ -62,6 +63,20 @@ window.onload = function() {
 		return combo;
 	};
 
+	convertStringToButtonCode = function(buttonCode) {
+		buttonCode = removeWhiteSpace(buttonCode);
+		buttonCode = buttonCode.toUpperCase();
+
+		switch(buttonCode) {
+			case "LEFT":
+				return 0;
+			case "MIDDLE":
+				return 1;
+			case "RIGHT":
+				return 2;
+		}
+	}
+
 	pinput.prototype.isKeyDown = function(key) {
 		if (typeof key == "string")
 			key = convertStringToKeycode(key);
@@ -78,20 +93,30 @@ window.onload = function() {
 		}
 		return true;
 	};
+
+	pinput.prototype.isMouseDown = function(button) {
+		if (typeof button === "string")
+			button = convertStringToButtonCode(button);
+		return this.mouseStates[button];
+	};
 		
 	input = new pinput();
-	document.onkeydown = function(e) {
+
+	window.onkeydown = function(e) {
 		if (e.which == 18)
 			e.preventDefault();
 		input.keyStates[e.which] = true;
 	}
-	document.onkeyup = function(e) {
+	window.onkeyup = function(e) {
 		input.keyStates[e.which] = false;
 	}
 
-	setInterval(function() {
-		if (input.isKeyDown('a')) {
-			console.log("test");
-		}
-	});
+	window.onmousedown = function(e) {
+		console.log(e.button)
+		input.mouseStates[e.button] = true;
+	}
+
+	window.onmouseup = function(e) {
+		input.mouseStates[e.button] = false;
+	}
 };
