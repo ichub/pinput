@@ -2,7 +2,7 @@
 
 ### Overview
 
-The majority of javascript input frameworks are event-based, which is fine in some contexts, but very frustrating in others. This script is unlike that, it saves the states of the keyboard and mouse keys, so that they are available for checking at any time, not just when an event is called.
+The majority of javascript input frameworks are event-based, which is fine in some contexts, but very frustrating in others. This framework is not event-based, but rather provides a persistent view of the keyboard and mouse states. This way, they that they are available for checking at any time, not just when an event is invoked.
 
 ### Examples
 
