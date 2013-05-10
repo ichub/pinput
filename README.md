@@ -1,12 +1,10 @@
-#H1 Pinput
+#H1 Pinput *A non event-based javascript input manager*
 
-#H3 *A non event-based javascript input manager*
-
-#H4 Overview
+#H5 Overview
 
 The majority of javascript input frameworks are event-based, which is fine in some contexts, but very frustrating in others. This script is unlike that, it saves the states of the keyboard and mouse keys, so that they are available for checking at any time, not just when an event is called.
 
-#H4 Examples
+#H5 Examples
 
 Pinput creates an object called 'input' which can be accessed globaly, which can be used to check the keyboard and mouse states. The key and button states can be accessed not only by thier corresponding key or button codes, but by their names as well. It is important to note that key names are *not* case sensitive. For example, to access the state of the 'a' key, you could write either of the following:
 
@@ -38,7 +36,7 @@ if (input.isKeyComboDown('a b c')) {
 
 The *isKeyComboDown* takes a space-separated string of keys to check the state of, and returns true if they are all pressed, false otherwise. This method, however, only takes named keys as the parameter, not keycodes.
 
-#H4 Special Keys
+#H5 Special Keys
 
 The keys that have no written representation can be refered to by name using these strings:
 
