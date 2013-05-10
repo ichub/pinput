@@ -1,5 +1,4 @@
 # Pinput 
-##*A non event-based javascript input manager*
 
 ### Overview
 
