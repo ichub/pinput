@@ -6,7 +6,7 @@ The majority of javascript input frameworks are event-based, which is fine in so
 
 ### Examples
 
-Pinput creates an object called 'input' which can be accessed globaly, which can be used to check the keyboard and mouse states. The key and button states can be accessed not only by thier corresponding key or button codes, but by their names as well. It is important to note that key names are *not* case sensitive. For example, to access the state of the 'a' key, you could write either of the following:
+Pinput creates an object called 'input' which can be accessed globaly, and can be used to check the keyboard and mouse states. The key and button states can be accessed not only by their corresponding key or button codes, but by their names as well. It is important to note that key names are *not* case sensitive. For example, to access the state of the 'a' key, you could write either of the following:
 
 ```javascript
 // key name option
