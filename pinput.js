@@ -2,7 +2,16 @@ window.onload = function() {
 	var pinput = function() {
 		this.keyStates = new Array(256);
 		this.mouseStates = new Array(3);
+
+		for (var i = 0; i < this.keyStates.length; i++) {
+			this.keyStates[i] = false;
+		}
+		for (var i = 0; i < this.mouseStates.length; i++) {
+			this.mouseStates[i] = false;
+		};
 	};
+
+	var isFireFox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 
 	removeWhiteSpace = function(string) {
 		return string.replace(/\s+/, '');
@@ -49,6 +58,21 @@ window.onload = function() {
 				return 45;
 			case "DELETE":
 				return 46;
+			case "+":
+				return isFireFox ? 61 : 187;
+			case "=":
+				return isFireFox ? 61 : 187;
+			case "-":
+				return isFireFox ? 173 : 189;
+			case "[":
+				return 219;
+			case "]":
+				return 221;
+			case "/":
+				return 191;
+			case "\\":
+				return 220;
+
 		}
 		return key.charCodeAt(0);
 	};
@@ -112,7 +136,6 @@ window.onload = function() {
 	}
 
 	window.onmousedown = function(e) {
-		console.log(e.button)
 		input.mouseStates[e.button] = true;
 	}
 
