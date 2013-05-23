@@ -28,6 +28,8 @@ window.onload = function() {
 		switch(key) {
 			case "BACKSPACE":
 				return 8;
+			case "SPACEBAR":
+				return 32;
 			case "TAB":
 				return 9;
 			case "ENTER":
