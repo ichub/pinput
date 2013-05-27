@@ -22,15 +22,15 @@
 
 	var isFireFox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 
-	removeWhiteSpace = function(string) {
+	var removeWhiteSpace = function(string) {
 		return string.replace(/\s+/, '');
 	};
 
-	stripWhiteSpace = function(string) {
+	var stripWhiteSpace = function(string) {
 		return string.replace(/\s+/, ' ');
 	};
 
-	convertStringToKeycode = function(key) {
+	var convertStringToKeycode = function(key) {
 		key = removeWhiteSpace(key);
 		key = key.toUpperCase();
 
@@ -88,7 +88,7 @@
 		return key.charCodeAt(0);
 	};
 
-	convertStringToKeyCombo = function(keyCombo) {
+	var convertStringToKeyCombo = function(keyCombo) {
 		keyComboString = stripWhiteSpace(keyComboString);
 		var combo = keyComboString.split(' ');
 
@@ -98,7 +98,7 @@
 		return combo;
 	};
 
-	convertStringToButtonCode = function(buttonCode) {
+	var convertStringToButtonCode = function(buttonCode) {
 		buttonCode = removeWhiteSpace(buttonCode);
 		buttonCode = buttonCode.toUpperCase();
 
@@ -112,7 +112,7 @@
 		}
 	}
 
-	init = function() {
+	var init = function() {
 		for (var i = 0; i < realState.keyStates.length; i++) {
 			realState.keyStates[i] = false;
 		}
