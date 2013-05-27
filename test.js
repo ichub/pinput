@@ -1,5 +1,5 @@
+var input = new pinput();
 setInterval(function() {
-	if (input.isKeyDown('spacebar') || input.isKeyDown('capslock')) {
-		console.log('a');
-	}
+	input.update();
+	console.log(input.isKeyClicked('a') || input.isKeyClicked('b'));
 }, 1);
