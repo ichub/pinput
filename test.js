@@ -1,5 +1,10 @@
-var input = new pinput();
-setInterval(function() {
-	input.update();
-	console.log(input.isKeyClicked('a') || input.isKeyClicked('b'));
-}, 1);
+window.onload = function() {
+	var input = new pinput();
+	setInterval(function() {
+		input.update();
+		if (input.isKeyDown('a'))
+		{
+			console.log('a');
+		}
+	}, 10);
+}
