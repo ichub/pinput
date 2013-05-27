@@ -1,35 +1,35 @@
-	var realState = {
-		keyStates: new Array(256),
-		mouseStates: new Array(3),
-	}
+var realState = {
+	keyStates: new Array(256),
+	mouseStates: new Array(3),
+}
 	
-	pinput = function() {
-		this.keyStates = new Array(256);
-		this.previousKeyStates = new Array(256);
-		this.mouseStates = new Array(3);
-		this.previousMouseStates = new Array(3);
+pinput = function() {
+	this.keyStates = new Array(256);
+	this.previousKeyStates = new Array(256);
+	this.mouseStates = new Array(3);
+	this.previousMouseStates = new Array(3);
 
-		for (var i = 0; i < this.keyStates.length; i++) {
-			this.keyStates[i] = false;
-			this.previousKeyStates[i] = false;
-		}
-		for (var i = 0; i < this.mouseStates.length; i++) {
-			this.mouseStates[i] = false;
-			this.previousMouseStates[i] = false;
-		};
+	for (var i = 0; i < this.keyStates.length; i++) {
+		this.keyStates[i] = false;
+		this.previousKeyStates[i] = false;
+	}
+	for (var i = 0; i < this.mouseStates.length; i++) {
+		this.mouseStates[i] = false;
+		this.previousMouseStates[i] = false;
 	};
+};
 
-	var isFireFox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+var isFireFox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 
-	removeWhiteSpace = function(string) {
-		return string.replace(/\s+/, '');
-	};
+removeWhiteSpace = function(string) {
+	return string.replace(/\s+/, '');
+};
 
-	stripWhiteSpace = function(string) {
-		return string.replace(/\s+/, ' ');
-	};
+stripWhiteSpace = function(string) {
+	return string.replace(/\s+/, ' ');
+};
 
-	convertStringToKeycode = function(key) {
+convertStringToKeycode = function(key) {
 	key = removeWhiteSpace(key);
 	key = key.toUpperCase();
 
