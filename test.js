@@ -2,7 +2,7 @@ window.onload = function() {
 	var input = new pinput();
 	setInterval(function() {
 		input.update();
-		if (input.isKeyDown('b'))
+		if (input.isKeyClicked('b'))
 		{
 			console.log('b');
 		}

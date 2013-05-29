@@ -159,16 +159,13 @@
 	};
 
 	pinput.prototype.isKeyDown = function(key) {
-		if (typeof key == "string")
-			key = convertStringToKeycode(key);
-
-		return this.keyStates[key];
+		return isKeyDown(key, this.keyStates);
 	};
 
 	pinput.prototype.isKeyComboDown = function(keyCombo) {
 		var combo = convertStringToKeyCombo(keyCombo);
 		for (var i = 0; i < combo.length; i++) {
-			if (!this.isKeyDown(combo[i])) {
+			if (!isKeyDown(combo[i], this.keyStates)) {
 				return false;
 			}
 		}
@@ -176,23 +173,15 @@
 	};
 
 	pinput.prototype.isMouseDown = function(button) {
-		if (typeof button === "string")
-			button = convertStringToButtonCode(button);
-		return this.mouseStates[button];
+		return isButtonDown(button, this.mouseStates);
 	};
 
 	pinput.prototype.isPreviousKeyDown = function(key) {
-		if (typeof key == "string")
-			key = convertStringToKeycode(key);
-
-		return this.previousKeyStates[key];
+		return isKeyDown(key, this.previousKeyStates);
 	};
 
 	pinput.prototype.isPreviousMouseDown = function(button) {
-		if (typeof button == "string")
-			button = convertStringToButtonCode(button);
-
-		return this.previousMouseStates[button];
+		return isButtonDown(button, this.previousMouseStates);
 	};
 
 	pinput.prototype.isKeyClicked = function(key) {
