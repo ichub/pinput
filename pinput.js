@@ -185,11 +185,11 @@
 	};
 
 	pinput.prototype.isKeyClicked = function(key) {
-		return this.isKeyDown(key) && !this.isPreviousKeyDown(key) && this.isKeyDown(key) == true;
+		return this.isKeyDown(key) && !this.isPreviousKeyDown(key) && this.isKeyDown(key);
 	};
 
 	pinput.prototype.isMouseClicked = function(button) {
-		return this.isMouseDown(button) && !this.isPreviousMouseDown(button) && this.isMouseDown(button) == true;
+		return this.isMouseDown(button) && !this.isPreviousMouseDown(button) && this.isMouseDown(button);
 	};
 
 	pinput.prototype.update = function() {
