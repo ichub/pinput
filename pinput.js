@@ -14,10 +14,11 @@
 			this.keyStates[i] = false;
 			this.previousKeyStates[i] = false;
 		}
+
 		for (var i = 0; i < this.mouseStates.length; i++) {
 			this.mouseStates[i] = false;
 			this.previousMouseStates[i] = false;
-		};
+		}
 	};
 
 	var isFireFox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
@@ -33,6 +34,12 @@
 	var convertStringToKeycode = function(key) {
 		key = removeWhiteSpace(key);
 		key = key.toUpperCase();
+
+		var keyCode = parseInt(key, 10);
+		if (!isNaN(keyCode))
+		{
+			return keyCode;
+		}
 
 		switch(key) {
 			case "BACKSPACE":
@@ -83,9 +90,10 @@
 				return 191;
 			case "\\":
 				return 220;
+			default:
+				return key.charCodeAt(0);
 
 		}
-		return key.charCodeAt(0);
 	};
 
 	var convertStringToKeyCombo = function(keyCombo) {
@@ -101,7 +109,13 @@
 	var convertStringToButtonCode = function(buttonCode) {
 		buttonCode = removeWhiteSpace(buttonCode);
 		buttonCode = buttonCode.toUpperCase();
-
+		
+		var buttonCodeNumber = parseInt(buttonCode, 10);
+		if (!isNaN(buttonCodeNumber))
+		{
+			return buttonCodeNumber;
+		}
+		
 		switch(buttonCode) {
 			case "LEFT":
 				return 0;
@@ -110,7 +124,7 @@
 			case "RIGHT":
 				return 2;
 		}
-	}
+	};
 
 	var init = function() {
 		for (var i = 0; i < realState.keyStates.length; i++) {
@@ -120,7 +134,29 @@
 		for (var i = 0; i < realState.mouseStates.length; i++) {
 			realState.mouseStates[i] = false;
 		}
-	}
+	};
+
+	var isKeyDown = function(key, keyStateArray)
+	{
+		var keyCode = convertStringToKeycode(key);
+		return keyStateArray[keyCode];
+	};
+
+	var isButtonDown = function(button, buttonStateArray)
+	{
+		var buttonCode = convertStringToButtonCode(button);
+		return buttonStateArray[buttonCode];
+	};
+
+	var isKeyClicked = function(key, currentKeyStateArray, previousKeyStateArray)
+	{
+		return isKeyDown(key, currentKeyStateArray) && !isKeyDown(key, previousKeyStateArray);
+	};
+
+	var isButtonClicked = function(key, currentButtonStateArray, previousButtonStateArray)
+	{
+		return isButtonDown(key, currentButtonStateArray) && !isButtonDown(key, previousButtonStateArray);
+	};
 
 	pinput.prototype.isKeyDown = function(key) {
 		if (typeof key == "string")
@@ -173,23 +209,24 @@
 
 		this.previousMouseStates = this.mouseStates.slice(0);
 		this.mouseStates = realState.mouseStates.slice(0);
-	}	
+	};	
 
 	window.onkeydown = function(e) {
 		if (e.which == 18)
 			e.preventDefault();
 		realState.keyStates[e.which] = true;
-	}
+	};
+
 	window.onkeyup = function(e) {
 		realState.keyStates[e.which] = false;
-	}
+	};
 
 	window.onmousedown = function(e) {
 		realState.mouseStates[e.button] = true;
-	}
+	};
 
 	window.onmouseup = function(e) {
 		realState.mouseStates[e.button] = false;
-	}
+	};
 	init();
 })();
