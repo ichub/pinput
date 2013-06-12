@@ -24,10 +24,12 @@
 	var isFireFox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 
 	var removeWhiteSpace = function(string) {
+		string = string + "";
 		return string.replace(/\s+/, '');
 	};
 
 	var stripWhiteSpace = function(string) {
+		string = string + "";
 		return string.replace(/\s+/, ' ');
 	};
 

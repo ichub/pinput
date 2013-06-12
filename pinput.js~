@@ -1,33 +1,45 @@
-window.onload = function() {
-	var pinput = function() {
+(function() {
+	var realState = {
+		keyStates: new Array(256),
+		mouseStates: new Array(3),
+	}
+		
+	pinput = function() {
 		this.keyStates = new Array(256);
 		this.previousKeyStates = new Array(256);
 		this.mouseStates = new Array(3);
-		this.previousMouseStates = new Array(256);
+		this.previousMouseStates = new Array(3);
 
 		for (var i = 0; i < this.keyStates.length; i++) {
 			this.keyStates[i] = false;
 			this.previousKeyStates[i] = false;
 		}
+
 		for (var i = 0; i < this.mouseStates.length; i++) {
 			this.mouseStates[i] = false;
 			this.previousMouseStates[i] = false;
-		};
+		}
 	};
 
 	var isFireFox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 
-	removeWhiteSpace = function(string) {
+	var removeWhiteSpace = function(string) {
 		return string.replace(/\s+/, '');
 	};
 
-	stripWhiteSpace = function(string) {
+	var stripWhiteSpace = function(string) {
 		return string.replace(/\s+/, ' ');
 	};
 
-	convertStringToKeycode = function(key) {
+	var convertStringToKeycode = function(key) {
 		key = removeWhiteSpace(key);
 		key = key.toUpperCase();
+
+		var keyCode = parseInt(key, 10);
+		if (!isNaN(keyCode))
+		{
+			return keyCode;
+		}
 
 		switch(key) {
 			case "BACKSPACE":
@@ -78,12 +90,13 @@ window.onload = function() {
 				return 191;
 			case "\\":
 				return 220;
+			default:
+				return key.charCodeAt(0);
 
 		}
-		return key.charCodeAt(0);
 	};
 
-	convertStringToKeyCombo = function(keyCombo) {
+	var convertStringToKeyCombo = function(keyCombo) {
 		keyComboString = stripWhiteSpace(keyComboString);
 		var combo = keyComboString.split(' ');
 
@@ -93,10 +106,16 @@ window.onload = function() {
 		return combo;
 	};
 
-	convertStringToButtonCode = function(buttonCode) {
+	var convertStringToButtonCode = function(buttonCode) {
 		buttonCode = removeWhiteSpace(buttonCode);
 		buttonCode = buttonCode.toUpperCase();
-
+		
+		var buttonCodeNumber = parseInt(buttonCode, 10);
+		if (!isNaN(buttonCodeNumber))
+		{
+			return buttonCodeNumber;
+		}
+		
 		switch(buttonCode) {
 			case "LEFT":
 				return 0;
@@ -105,19 +124,48 @@ window.onload = function() {
 			case "RIGHT":
 				return 2;
 		}
-	}
+	};
+
+	var init = function() {
+		for (var i = 0; i < realState.keyStates.length; i++) {
+			realState.keyStates[i] = false;
+		}
+
+		for (var i = 0; i < realState.mouseStates.length; i++) {
+			realState.mouseStates[i] = false;
+		}
+	};
+
+	var isKeyDown = function(key, keyStateArray)
+	{
+		var keyCode = convertStringToKeycode(key);
+		return keyStateArray[keyCode];
+	};
+
+	var isButtonDown = function(button, buttonStateArray)
+	{
+		var buttonCode = convertStringToButtonCode(button);
+		return buttonStateArray[buttonCode];
+	};
+
+	var isKeyClicked = function(key, currentKeyStateArray, previousKeyStateArray)
+	{
+		return isKeyDown(key, currentKeyStateArray) && !isKeyDown(key, previousKeyStateArray);
+	};
+
+	var isButtonClicked = function(key, currentButtonStateArray, previousButtonStateArray)
+	{
+		return isButtonDown(key, currentButtonStateArray) && !isButtonDown(key, previousButtonStateArray);
+	};
 
 	pinput.prototype.isKeyDown = function(key) {
-		if (typeof key == "string")
-			key = convertStringToKeycode(key);
-
-		return this.keyStates[key];
+		return isKeyDown(key, this.keyStates);
 	};
 
 	pinput.prototype.isKeyComboDown = function(keyCombo) {
 		var combo = convertStringToKeyCombo(keyCombo);
 		for (var i = 0; i < combo.length; i++) {
-			if (!this.isKeyDown(combo[i])) {
+			if (!isKeyDown(combo[i], this.keyStates)) {
 				return false;
 			}
 		}
@@ -125,54 +173,49 @@ window.onload = function() {
 	};
 
 	pinput.prototype.isMouseDown = function(button) {
-		if (typeof button === "string")
-			button = convertStringToButtonCode(button);
-		return this.mouseStates[button];
+		return isButtonDown(button, this.mouseStates);
 	};
-	
-	pinput.prototype.isPreviousKeyDown = function(key) {
-		if (typeof key == "string")
-			key = convertStringToKeycode(key);
 
-		return this.previousKeyStates[key];
+	pinput.prototype.isPreviousKeyDown = function(key) {
+		return isKeyDown(key, this.previousKeyStates);
 	};
 
 	pinput.prototype.isPreviousMouseDown = function(button) {
-		if (typeof button == "string")
-			button = convertStringToButtonCode(button);
-
-		return this.previousMouseStates[button];
+		return isButtonDown(button, this.previousMouseStates);
 	};
 
 	pinput.prototype.isKeyClicked = function(key) {
-		return this.isKeyDown(key) && !this.isPreviousKeyDown(key) && this.isKeyDown(key) == true;
+		return this.isKeyDown(key) && !this.isPreviousKeyDown(key) && this.isKeyDown(key);
 	};
 
 	pinput.prototype.isMouseClicked = function(button) {
-		return this.isMouseDown(button) && !this.isPreviousMouseDown(button) && this.isMouseDown(button) == true;
+		return this.isMouseDown(button) && !this.isPreviousMouseDown(button) && this.isMouseDown(button);
 	};
 
-	input = new pinput();
+	pinput.prototype.update = function() {
+		this.previousKeyStates = this.keyStates.slice(0);
+		this.keyStates = realState.keyStates.slice(0);
+
+		this.previousMouseStates = this.mouseStates.slice(0);
+		this.mouseStates = realState.mouseStates.slice(0);
+	};	
 
 	window.onkeydown = function(e) {
 		if (e.which == 18)
 			e.preventDefault();
-		input.keyStates[e.which] = true;
-	}
+		realState.keyStates[e.which] = true;
+	};
+
 	window.onkeyup = function(e) {
-		input.keyStates[e.which] = false;
-	}
+		realState.keyStates[e.which] = false;
+	};
 
 	window.onmousedown = function(e) {
-		input.mouseStates[e.button] = true;
-	}
+		realState.mouseStates[e.button] = true;
+	};
 
 	window.onmouseup = function(e) {
-		input.mouseStates[e.button] = false;
-	}
-
-	window.setInterval(function() {
-		input.previousKeyStates = input.keyStates.slice(0);
-		input.previousMouseStates = input.keyStates.slice(0);
-	}, 1);
-};
+		realState.mouseStates[e.button] = false;
+	};
+	init();
+})();
