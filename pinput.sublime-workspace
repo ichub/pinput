@@ -1,0 +1,406 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"sum",
+				"sumOfPrimes"
+			],
+			[
+				"sprn",
+				"springLength"
+			],
+			[
+				"de",
+				"updateDelta"
+			],
+			[
+				"upda",
+				"updateDelta"
+			],
+			[
+				"prot",
+				"prototype"
+			],
+			[
+				"pr",
+				"proto	Prototype"
+			],
+			[
+				"pro",
+				"prototype"
+			],
+			[
+				"for",
+				"for	for (…) {…}"
+			],
+			[
+				"disp",
+				"displayDimensions"
+			],
+			[
+				"get",
+				"getPixelPosition"
+			],
+			[
+				"ne",
+				"nextPixel"
+			],
+			[
+				"dimen",
+				"displayDimensions"
+			],
+			[
+				"point",
+				"pointDimensions"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "src/index.html",
+			"settings":
+			{
+				"buffer_size": 183,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/pinput.js",
+			"settings":
+			{
+				"buffer_size": 5062,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/test.js",
+			"settings":
+			{
+				"buffer_size": 171,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 58.0,
+		"selected_items":
+		[
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Package Control: Disable Package"
+			],
+			[
+				":w",
+				":w - Save"
+			],
+			[
+				"setjavas",
+				"Set Syntax: JavaScript"
+			],
+			[
+				":q",
+				"Set Syntax: SQL"
+			],
+			[
+				"0",
+				":0 - BOF"
+			],
+			[
+				"",
+				":$ - EOF"
+			],
+			[
+				"open",
+				"View: Toggle Open Files in Side Bar"
+			],
+			[
+				"javas",
+				"Set Syntax: JavaScript"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": false,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Ivan/Dev/Web/Pinput/pinput.sublime-workspace",
+		"/C/Users/Ivan/Dev/Web/AIChallenge/src/style.css",
+		"/C/Users/Ivan/Dev/Web/AIChallenge/src/index.html",
+		"/C/Users/Ivan/Dev/Web/AIChallenge/src/main.js",
+		"/C/Users/Ivan/Dev/Web/AIChallenge/main.js",
+		"/C/Users/Ivan/Dev/Web/AIChallenge/style.css",
+		"/C/Users/Ivan/Dev/Web/AIChallenge/index.html",
+		"/C/Users/Ivan/Dev/Web/PhysicsWebsite/src/index.html",
+		"/C/Users/Ivan/Dev/Web/PhysicsWebsite/src/main.js",
+		"/C/Users/Ivan/Dev/Web/PhysicsWebsite/src/style.css",
+		"/C/Users/Ivan/Dev/Web/PhysicsWebsite/src/pinput.js",
+		"/C/Users/Ivan/Dev/Haskell/test.hs",
+		"/C/Users/Ivan/Dev/Web/PhysicsWebsite/PhysicsWebsite.sublime-project",
+		"/C/Users/Ivan/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Ivan/Documents/asd",
+		"/C/Users/Ivan/Dev/MathCanvas/mathcanvas.sublime-project",
+		"/C/Program Files (x86)/Zend/Apache2/conf/httpd.conf",
+		"/C/Users/Ivan/Dev/MathCanvas/style.css",
+		"/C/Users/Ivan/Dev/MathCanvas/main.js",
+		"/C/Users/Ivan/Dev/MathCanvas/index.html",
+		"/C/Users/Ivan/Dev/MathCanvas/.gitignore",
+		"/C/Users/Ivan/Dev/MathCanvas/.gitattributes",
+		"/C/Users/Ivan/Dev/Settings/.gitignore_global",
+		"/C/Users/Ivan/.gitconfig",
+		"/C/Users/Ivan/Documents/GitHub/PhysicsWebsite/src/main.js",
+		"/C/Users/Ivan/Documents/GitHub/PhysicsWebsite/src/pinput.js",
+		"/C/Users/Ivan/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/Ivan/Documents/GitHub/Particles/index.html",
+		"/C/Users/Ivan/Documents/sublime_text.exe",
+		"/C/Program Files/Sublime Text 2/sublime_text.exe"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"body",
+			"\n    ",
+			"innerHTML",
+			"6",
+			"left",
+			"\\t",
+			"\\n",
+			" ",
+			"35",
+			"40",
+			"y",
+			"x",
+			"show",
+			"DocumentRoot",
+			"this",
+			"font",
+			"var",
+			"32 42",
+			"33 42"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"",
+			"40",
+			"45",
+			"y % 7",
+			"x % 8"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "src/index.html",
+					"settings":
+					{
+						"buffer_size": 183,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/pinput.js",
+					"settings":
+					{
+						"buffer_size": 5062,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								829,
+								829
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 897.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/test.js",
+					"settings":
+					{
+						"buffer_size": 171,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": false,
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"in",
+				"/C/Users/Ivan/Dev/Web/AIChallenge/src/index.html"
+			],
+			[
+				"s",
+				"src/style.css"
+			],
+			[
+				"main",
+				"src/main.js"
+			],
+			[
+				"mai",
+				"src/main.js"
+			],
+			[
+				"",
+				"src/style.css"
+			],
+			[
+				"ma",
+				"mathcanvas.sublime-project"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 189.0,
+	"status_bar_visible": false
+}
