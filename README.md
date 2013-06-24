@@ -82,7 +82,7 @@ Lastly, pinput can check if a key was pressed and released. To do this, all you 
   }
 ```
 
-This method also takes a space separated list of keys or buttons to check, and returns true only during the first moment when they are all pressed together. False otherwise
+This method also takes a space separated list of keys or buttons to check, and returns true only during the first moment when they are all pressed together. False otherwise.
 ### Special Keys
 
 The keys that have no written representation can be refered to by name using these strings:
