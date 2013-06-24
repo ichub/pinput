@@ -67,7 +67,7 @@ if (input.isDown('a') && input.isDown('b') && input.isDown('mouseleft')) {
 }
 
 // you can write this:
-if (input.isDown('a b')) {
+if (input.isDown('a b mouseleft')) {
   /* do something... */
 }
 ```
