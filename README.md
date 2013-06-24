@@ -44,20 +44,16 @@ function main() {
 setInterval(main, 10); // calls main every 10 milliseconds.
 ```
 
-Now for the meat: getting key states. The key and button states can be accessed not only by their corresponding key or button codes, but by their names as well. It is important to note that key names are *not* case sensitive. For example, to access the state of the 'a' key, you could write any of the following:
+Now for the meat: getting key states. Here we will check if the key with the letter 'a' is currently down. Note that the name of the key is not case sensitive.
 
 ```javascript
-// key name option
-if (input.isKeyDown('a')) {
+// lowercase key
+if (input.isDown('a')) {
   /* do something... */
 }
 
 // capitalized key
-if (input.isKeyDown('A')) {
-  /* do something... */
-}
-// keycode option
-if (input.isKeyDown(65)) {
+if (input.isDown('A')) {
   /* do something... */
 }
 ```
@@ -66,22 +62,22 @@ Pinput also supports key combinations, saving you time. In other words, there is
 
 ```javascript
 // instead of writing this:
-if (input.isKeyDown('a') && input.isKeyDown('b') && input.isKeyDown('c')) {
+if (input.isDown('a') && input.isDown('b') && input.isDown('mouseleft')) {
   /* do something... */
 }
 
 // you can write this:
-if (input.isKeyComboDown('a b c')) {
+if (input.isDown('a b')) {
   /* do something... */
 }
 ```
 
-The *isKeyComboDown* takes a space-separated string of keys to check the state of, and returns true if they are all pressed, false otherwise. This method, however, only takes named keys as the parameter, not keycodes.
+The *isDown* takes a space-separated string of keys and mouse buttons to check the state of, and returns true if they are all pressed, false otherwise.
 
 Lastly, pinput can check if a key was pressed and released. To do this, all you have to do is:
 ```javascript
   // checks if the a key was 'clicked'
-  if (input.isKeyClicked('a')) {
+  if (input.isClicked('a')) {
     /* do something */
   }
 ```
@@ -107,4 +103,7 @@ The keys that have no written representation can be refered to by name using the
 15. insert - "insert"
 16. delete - "delete"
 17. spacebar - "spacebar"
+18. left mouse button - "mouseleft"
+19. middle mouse button - "mousemiddle"
+20. right mouse button - "mousemiddle
 ```
