@@ -126,11 +126,11 @@
 		buttonCode = buttonCode.toUpperCase();
 		
 		switch(buttonCode) {
-			case "LEFT":
+			case "MOUSELEFT":
 				return ['mouse', 0];
-			case "MIDDLE":
+			case "MOUSEMIDDLE":
 				return ['mouse', 1];
-			case "RIGHT":
+			case "MOUSERIGHT":
 				return ['mouse', 2];
 			default:
 				return null;
