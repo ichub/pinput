@@ -2,6 +2,7 @@
 	var realState = {
 		keyStates: new Array(256),
 		mouseStates: new Array(3),
+		mousePosition: {x: 0, y: 0}
 	}
 	
 	// initializes all the keyboard states
@@ -16,6 +17,11 @@
 		// analogous to *keyStates* and *previousKeyStates* 
 		this.mouseStates = new Array(3);
 		this.previousMouseStates = new Array(3);
+
+		this.mousePosition = {
+			x: 0,
+			y: 0,
+		}
 
 		// initializes all the keyStates to their resting 
 		// position - not pressed
@@ -260,6 +266,11 @@
 	window.onmouseup = function(e) {
 		realState.mouseStates[e.button] = false;
 	};
+
+	window.onmousemove = function(e) {
+		realState.mousePosition.x = e.clientX;
+		realState.mousePosition.y = e.clientY;
+	}
 
 	// initializes *realState*
 	init();
