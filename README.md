@@ -72,7 +72,7 @@ if (input.isDown('a b mouseleft')) {
 }
 ```
 
-The *isDown* takes a space-separated string of keys and mouse buttons to check the state of, and returns true if they are all pressed, false otherwise.
+The *isDown* takes a space-separated string of keys and mouse buttons to check the state of, and returns true if they are all pressed, false otherwise. This also brings us to the state of the mouse. You can check the state of the mouse buttons using their names - 'mouseleft', 'mouseright', and 'mousemiddle'. These behave just like all the other keys, and you can mix key checks with mouse checks.
 
 Lastly, pinput can check if a key was pressed and released. To do this, all you have to do is:
 ```javascript
@@ -81,6 +81,8 @@ Lastly, pinput can check if a key was pressed and released. To do this, all you 
     /* do something */
   }
 ```
+
+This method also takes a space separated list of keys or buttons to check, and returns true only during the first moment when they are all pressed together. False otherwise
 ### Special Keys
 
 The keys that have no written representation can be refered to by name using these strings:
