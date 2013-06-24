@@ -53,63 +53,57 @@
 		key = removeWhiteSpace(key);
 		key = key.toUpperCase();
 
-		var keyCode = parseInt(key, 10);
-		if (!isNaN(keyCode))
-		{
-			return keyCode;
-		}
-
 		switch(key) {
 			case "BACKSPACE":
-				return 8;
+				return ['key', 8];
 			case "SPACEBAR":
-				return 32;
+				return ['key', 32];
 			case "TAB":
-				return 9;
+				return ['key', 9];
 			case "ENTER":
-				return 13;
+				return ['key', 13];
 			case "SHIFT":
-				return 16;
+				return ['key', 16];
 			case "CONTROL":
-				return 17;
+				return ['key', 17];
 			case "ALT":
-				return 18;
+				return ['key', 18];
 			case "CAPSLOCK":
-				return 20;
+				return ['key', 20];
 			case "ESCAPE":
-				return 27;
+				return ['key', 27];
 			case "PAGEUP":
-				return 33;
+				return ['key', 33];
 			case "PAGEDOWN":
-				return 34;
+				return ['key', 34];
 			case "ARROWLEFT":
-				return 37;
+				return ['key', 37];
 			case "ARROWUP":
-				return 38;
+				return ['key', 38];
 			case "ARROWRIGHT":
-				return 38;
+				return ['key', 38];
 			case "ARROWDOWN":
-				return 40;
+				return ['key', 40];
 			case "INSERT": 
-				return 45;
+				return ['key', 45];
 			case "DELETE":
-				return 46;
+				return ['key', 46];
 			case "+":
-				return isFireFox ? 61 : 187;
+				return ['key', isFireFox ? 61 : 187];
 			case "=":
-				return isFireFox ? 61 : 187;
+				return ['key', isFireFox ? 61 : 187];
 			case "-":
-				return isFireFox ? 173 : 189;
+				return ['key', isFireFox ? 173 : 189];
 			case "[":
-				return 219;
+				return ['key', 219];
 			case "]":
-				return 221;
+				return ['key', 221];
 			case "/":
-				return 191;
+				return ['key', 191];
 			case "\\":
-				return 220;
+				return ['key', 220];
 			default:
-				return key.charCodeAt(0);
+				return ['key', key.charCodeAt(0)];
 
 		}
 	};
@@ -131,21 +125,55 @@
 		buttonCode = removeWhiteSpace(buttonCode);
 		buttonCode = buttonCode.toUpperCase();
 		
-		var buttonCodeNumber = parseInt(buttonCode, 10);
-		if (!isNaN(buttonCodeNumber))
-		{
-			return buttonCodeNumber;
-		}
-		
 		switch(buttonCode) {
 			case "LEFT":
-				return 0;
+				return ['mouse', 0];
 			case "MIDDLE":
-				return 1;
+				return ['mouse', 1];
 			case "RIGHT":
-				return 2;
+				return ['mouse', 2];
+			default:
+				return null;
 		}
 	};
+
+	var convertStringToCombo = function(combo) {
+		combo = stripWhiteSpace(combo);
+		var tokens = combo.split(' ');
+		var keysAndButtons = [];
+
+		for (var i = 0; i < tokens.length; i++) {
+			var code = convertStringToButtonCode(tokens[i]);
+			
+			if (code != null) {
+				keysAndButtons.push(code)
+			}
+			else {
+				keysAndButtons.push(convertStringToKeycode(tokens[i]));
+			}
+		}
+
+		return keysAndButtons;
+	}
+
+	var checkCombo = function(combination, mouseStates, keyStates) {
+
+		var combo = convertStringToCombo(combination);
+
+		for (var i = 0; i < combo.length; i++) {
+			if (combo[i][0] === 'mouse') {
+				if (!mouseStates[combo[i][1]]) {
+					return false;
+				}
+			}
+			else {
+				if (!keyStates[combo[i][1]]) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
 
 	// initializes the *realState* with the default values
 	var init = function() {
@@ -185,46 +213,14 @@
 		return isButtonDown(key, currentButtonStateArray) && !isButtonDown(key, previousButtonStateArray);
 	};
 
-	// checks if the key is down in the current *pinput* instance
-	pinput.prototype.isKeyDown = function(key) {
-		return isKeyDown(key, this.keyStates);
-	};
+	pinput.prototype.isClicked = function(combo) {
+		return checkCombo(combo, this.mouseStates, this.keyStates) &&
+			!checkCombo(combo, this.previousMouseStates, this.previousKeyStates);
+	}
 
-	// checks if the key combo is down in the current *pinput* instance
-	pinput.prototype.isKeyComboDown = function(keyCombo) {
-		var combo = convertStringToKeyCombo(keyCombo);
-		for (var i = 0; i < combo.length; i++) {
-			if (!isKeyDown(combo[i], this.keyStates)) {
-				return false;
-			}
-		}
-		return true;
-	};
-
-	// checks if the mouse button is down in the current *pinput instance
-	pinput.prototype.isMouseDown = function(button) {
-		return isButtonDown(button, this.mouseStates);
-	};
-
-	// same as *isKeyDown* but checks the last frame
-	pinput.prototype.isPreviousKeyDown = function(key) {
-		return isKeyDown(key, this.previousKeyStates);
-	};
-
-	// same as *isMouseDown* but checks the last frame
-	pinput.prototype.isPreviousMouseDown = function(button) {
-		return isButtonDown(button, this.previousMouseStates);
-	};
-
-	// checks if the given key is clicked in the current *pinput* instance
-	pinput.prototype.isKeyClicked = function(key) {
-		return this.isKeyDown(key) && !this.isPreviousKeyDown(key) && this.isKeyDown(key);
-	};
-
-	// same as *isKeyClicked* but with the mouse button
-	pinput.prototype.isMouseClicked = function(button) {
-		return this.isMouseDown(button) && !this.isPreviousMouseDown(button) && this.isMouseDown(button);
-	};
+	pinput.prototype.isDown = function(combo) {
+		return checkCombo(combo, this.mouseStates, this.keyStates);
+	}
 
 	// updates the key and mouse states of the current *pinput* instance.
 	// the previous key and mouse states are set to the current ones, and

@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"convertStringTo",
+				"convertStringToKeyCombo"
+			],
+			[
+				"convert",
+				"convertStringToKeycode"
+			],
+			[
 				"sum",
 				"sumOfPrimes"
 			],
@@ -59,30 +67,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "src/index.html",
-			"settings":
-			{
-				"buffer_size": 183,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/pinput.js",
-			"settings":
-			{
-				"buffer_size": 5062,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/test.js",
-			"settings":
-			{
-				"buffer_size": 171,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -148,6 +132,14 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Ivan/Dev/Web/ASCIIArt/src/style.css",
+		"/C/Users/Ivan/Dev/Web/ASCIIArt/src/main.js",
+		"/C/Users/Ivan/Dev/Web/ASCIIArt/src/index.html",
+		"/C/Users/Ivan/Dev/Web/MathCanvas/mathcanvas.sublime-project",
+		"/C/Users/Ivan/Dev/Web/Pinput/src/test.js",
+		"/C/Users/Ivan/Dev/ideas.txt",
+		"/C/Users/Ivan/Dev/Web/Pinput/src/pinput.js",
+		"/C/Users/Ivan/Dev/Web/Pinput/src/index.html",
 		"/C/Users/Ivan/Dev/Web/Pinput/pinput.sublime-workspace",
 		"/C/Users/Ivan/Dev/Web/AIChallenge/src/style.css",
 		"/C/Users/Ivan/Dev/Web/AIChallenge/src/index.html",
@@ -236,88 +228,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "src/index.html",
-					"settings":
-					{
-						"buffer_size": 183,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/pinput.js",
-					"settings":
-					{
-						"buffer_size": 5062,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								829,
-								829
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 897.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/test.js",
-					"settings":
-					{
-						"buffer_size": 171,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
