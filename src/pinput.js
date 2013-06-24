@@ -213,14 +213,19 @@
 		return isButtonDown(key, currentButtonStateArray) && !isButtonDown(key, previousButtonStateArray);
 	};
 
-	pinput.prototype.isClicked = function(combo) {
+	pinput.prototype.isReleased = function(combo) {
+		return !checkCombo(combo, this.mouseStates, this.keyStates) &&
+			checkCombo(combo, this.previousMouseStates, this.previousKeyStates);
+	};
+
+	pinput.prototype.isPressed = function(combo) {
 		return checkCombo(combo, this.mouseStates, this.keyStates) &&
 			!checkCombo(combo, this.previousMouseStates, this.previousKeyStates);
-	}
+	};
 
 	pinput.prototype.isDown = function(combo) {
 		return checkCombo(combo, this.mouseStates, this.keyStates);
-	}
+	};
 
 	// updates the key and mouse states of the current *pinput* instance.
 	// the previous key and mouse states are set to the current ones, and
