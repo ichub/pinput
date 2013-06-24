@@ -18,11 +18,6 @@
 		this.mouseStates = new Array(3);
 		this.previousMouseStates = new Array(3);
 
-		this.mousePosition = {
-			x: 0,
-			y: 0,
-		}
-
 		// initializes all the keyStates to their resting 
 		// position - not pressed
 		for (var i = 0; i < this.keyStates.length; i++) {
@@ -243,6 +238,8 @@
 
 		this.previousMouseStates = this.mouseStates.slice(0);
 		this.mouseStates = realState.mouseStates.slice(0);
+
+		this.mousePosition = realState.position;
 	};	
 
 	// creates event handlers which update they real state with 
