@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"mouse",
+				"mousePosition"
+			],
+			[
+				"pre",
+				"previousKeyStates"
+			],
+			[
+				"check",
+				"checkCombo"
+			],
+			[
+				"conver",
+				"convertStringToButtonCode"
+			],
+			[
+				"stri",
+				"stripWhiteSpace"
+			],
+			[
 				"convertStringTo",
 				"convertStringToKeyCombo"
 			],
@@ -67,6 +87,14 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "pinput.sublime-project",
+			"settings":
+			{
+				"buffer_size": 4,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -132,14 +160,17 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Ivan/Dev/asd",
+		"/C/Users/Ivan/Dev/Haskell/test.hs",
+		"/C/Users/Ivan/.gitconfig",
+		"/C/Users/Ivan/Dev/Web/Pinput/src/test.js",
+		"/C/Users/Ivan/Dev/Web/Pinput/src/index.html",
+		"/C/Users/Ivan/Dev/Web/Pinput/src/pinput.js",
 		"/C/Users/Ivan/Dev/Web/ASCIIArt/src/style.css",
 		"/C/Users/Ivan/Dev/Web/ASCIIArt/src/main.js",
 		"/C/Users/Ivan/Dev/Web/ASCIIArt/src/index.html",
 		"/C/Users/Ivan/Dev/Web/MathCanvas/mathcanvas.sublime-project",
-		"/C/Users/Ivan/Dev/Web/Pinput/src/test.js",
 		"/C/Users/Ivan/Dev/ideas.txt",
-		"/C/Users/Ivan/Dev/Web/Pinput/src/pinput.js",
-		"/C/Users/Ivan/Dev/Web/Pinput/src/index.html",
 		"/C/Users/Ivan/Dev/Web/Pinput/pinput.sublime-workspace",
 		"/C/Users/Ivan/Dev/Web/AIChallenge/src/style.css",
 		"/C/Users/Ivan/Dev/Web/AIChallenge/src/index.html",
@@ -151,7 +182,6 @@
 		"/C/Users/Ivan/Dev/Web/PhysicsWebsite/src/main.js",
 		"/C/Users/Ivan/Dev/Web/PhysicsWebsite/src/style.css",
 		"/C/Users/Ivan/Dev/Web/PhysicsWebsite/src/pinput.js",
-		"/C/Users/Ivan/Dev/Haskell/test.hs",
 		"/C/Users/Ivan/Dev/Web/PhysicsWebsite/PhysicsWebsite.sublime-project",
 		"/C/Users/Ivan/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
 		"/C/Users/Ivan/Documents/asd",
@@ -163,7 +193,6 @@
 		"/C/Users/Ivan/Dev/MathCanvas/.gitignore",
 		"/C/Users/Ivan/Dev/MathCanvas/.gitattributes",
 		"/C/Users/Ivan/Dev/Settings/.gitignore_global",
-		"/C/Users/Ivan/.gitconfig",
 		"/C/Users/Ivan/Documents/GitHub/PhysicsWebsite/src/main.js",
 		"/C/Users/Ivan/Documents/GitHub/PhysicsWebsite/src/pinput.js",
 		"/C/Users/Ivan/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
@@ -187,6 +216,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"\\n",
+			"splitString",
+			"str",
+			"char",
+			"\\n",
+			"return (\\d+)",
 			"body",
 			"\n    ",
 			"innerHTML",
@@ -213,6 +248,14 @@
 		"regex": true,
 		"replace_history":
 		[
+			" ",
+			"",
+			" +\\n",
+			"+\\n",
+			" ",
+			"",
+			"return \\['mouse', \\1\\]",
+			"return \\['key', \\1\\]",
 			"",
 			"40",
 			"45",
@@ -228,8 +271,35 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "pinput.sublime-project",
+					"settings":
+					{
+						"buffer_size": 4,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
