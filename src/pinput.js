@@ -18,6 +18,8 @@
 		this.mouseStates = new Array(3);
 		this.previousMouseStates = new Array(3);
 
+		this.useRealState = false;
+
 		this.mousePosition = {
 			x: 0,
 			y: 0,
@@ -235,6 +237,11 @@
 	};
 
 	pinput.prototype.isDown = function(combo) {
+		if (this.useRealState) {
+			this.mousePosition.x = realState.mousePosition.x;
+			this.mousePosition.y = realState.mousePosition.y;
+			return checkCombo(combo, realState.mouseStates, realState.keyStates);
+		}
 		return checkCombo(combo, this.mouseStates, this.keyStates);
 	};
 
