@@ -6,7 +6,7 @@
 	}
 	
 	// initializes all the keyboard states
-	pinput = function() {
+	Pinput = function() {
 		// creates arrays to store information about the state of 
 		// each of the keys. true if pressed, false otherwise. the
 		// *previousKeyStates* array is used to store the state of 
@@ -226,17 +226,17 @@
 		return isButtonDown(key, currentButtonStateArray) && !isButtonDown(key, previousButtonStateArray);
 	};
 
-	pinput.prototype.isReleased = function(combo) {
+	Pinput.prototype.isReleased = function(combo) {
 		return !checkCombo(combo, this.mouseStates, this.keyStates) &&
 			checkCombo(combo, this.previousMouseStates, this.previousKeyStates);
 	};
 
-	pinput.prototype.isPressed = function(combo) {
+	Pinput.prototype.isPressed = function(combo) {
 		return checkCombo(combo, this.mouseStates, this.keyStates) &&
 			!checkCombo(combo, this.previousMouseStates, this.previousKeyStates);
 	};
 
-	pinput.prototype.isDown = function(combo) {
+	Pinput.prototype.isDown = function(combo) {
 		if (this.useRealState) {
 			this.mousePosition.x = realState.mousePosition.x;
 			this.mousePosition.y = realState.mousePosition.y;
@@ -249,7 +249,7 @@
 	// the previous key and mouse states are set to the current ones, and
 	// the current ones are set to reflect the actual state of the keyboard
 	// and mouse.
-	pinput.prototype.update = function() {
+	Pinput.prototype.update = function() {
 		this.previousKeyStates = this.keyStates.slice(0);
 		this.keyStates = realState.keyStates.slice(0);
 

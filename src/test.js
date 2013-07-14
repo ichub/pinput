@@ -1,8 +1,8 @@
 window.onload = function() {
-	var input = new pinput();
+	var input = new Pinput();
 	setInterval(function() {
 		input.update();
-		if (input.isClicked('b a mouseleft'))
+		if (input.isDown('b'))
 		{
 			console.log('b');
 		}
