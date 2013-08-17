@@ -1,4 +1,4 @@
-(function() {
+var Pinput = (function() {
 	"use strict;"
 	
 	var realState = {
@@ -8,7 +8,7 @@
 	}
 	
 	// initializes all the keyboard states
-	Pinput = function() {
+	var Pinput = function() {
 		// creates arrays to store information about the state of 
 		// each of the keys. true if pressed, false otherwise. the
 		// *previousKeyStates* array is used to store the state of 
@@ -293,4 +293,6 @@
 
 	// initializes *realState*
 	init();
+
+	return Pinput;
 })();
