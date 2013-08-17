@@ -1,4 +1,6 @@
 (function() {
+	"use strict;"
+	
 	var realState = {
 		keyStates: new Array(256),
 		mouseStates: new Array(3),
@@ -50,20 +52,20 @@
 
 	// removes all whitespace from a given string.
 	var removeWhiteSpace = function(string) {
-		string = string + "";
+		var input = input + "";
 		return string.replace(/\s+/, '');
 	};
 
 	// replaces all consecutive instances of whitespace in a given
 	// string with one space.
 	var stripWhiteSpace = function(string) {
-		string = string + "";
+		var input = input + "";
 		return string.replace(/\s+/, ' ');
 	};
 
 	// converts a string to a keycode
 	var convertStringToKeycode = function(key) {
-		key = removeWhiteSpace(key);
+		var key = removeWhiteSpace(key);
 		key = key.toUpperCase();
 
 		switch(key) {
@@ -124,7 +126,7 @@
 	// converts a string of space separated keys to an array
 	// of keycodes which can be used to check their states
 	var convertStringToKeyCombo = function(keyCombo) {
-		keyComboString = stripWhiteSpace(keyComboString);
+		var keyComboString = stripWhiteSpace(keyCombo);
 		var combo = keyComboString.split(' ');
 
 		for (var i = 0; i < combo.length; i++) {
@@ -135,8 +137,8 @@
 
 	// same as *convertStringToKeyCombo* but with mouse buttons
 	var convertStringToButtonCode = function(buttonCode) {
-		buttonCode = removeWhiteSpace(buttonCode);
-		buttonCode = buttonCode.toUpperCase();
+		var code = removeWhiteSpace(buttonCode);
+		code = code.toUpperCase();
 		
 		switch(buttonCode) {
 			case "MOUSELEFT":
@@ -151,7 +153,7 @@
 	};
 
 	var convertStringToCombo = function(combo) {
-		combo = stripWhiteSpace(combo);
+		var combo = stripWhiteSpace(combo);
 		var tokens = combo.split(' ');
 		var keysAndButtons = [];
 
@@ -170,7 +172,6 @@
 	}
 
 	var checkCombo = function(combination, mouseStates, keyStates) {
-
 		var combo = convertStringToCombo(combination);
 
 		for (var i = 0; i < combo.length; i++) {
