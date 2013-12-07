@@ -107,5 +107,5 @@ The keys that have no written representation can be refered to by name using the
 17. spacebar - "spacebar"
 18. left mouse button - "mouseleft"
 19. middle mouse button - "mousemiddle"
-20. right mouse button - "mousemiddle
+20. right mouse button - "mouseright"
 ```
