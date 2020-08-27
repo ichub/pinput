@@ -96,7 +96,7 @@ var Pinput = (function() {
 			case "ARROWUP":
 				return ['key', 38];
 			case "ARROWRIGHT":
-				return ['key', 38];
+				return ['key', 39];
 			case "ARROWDOWN":
 				return ['key', 40];
 			case "INSERT": 
