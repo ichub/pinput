@@ -137,10 +137,9 @@ var Pinput = (function() {
 
 	// same as *convertStringToKeyCombo* but with mouse buttons
 	var convertStringToButtonCode = function(buttonCode) {
-		var code = removeWhiteSpace(buttonCode);
-		code = code.toUpperCase();
+		var code = removeWhiteSpace(buttonCode).toUpperCase();
 		
-		switch(buttonCode) {
+		switch(code) {
 			case "MOUSELEFT":
 				return ['mouse', 0];
 			case "MOUSEMIDDLE":
