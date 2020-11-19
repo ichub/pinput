@@ -1,14 +1,14 @@
-var Pinput = (function() {
+var Pinput = (function () {
 	"use strict;"
-	
+
 	var realState = {
 		keyStates: new Array(256),
 		mouseStates: new Array(3),
-		mousePosition: {x: 0, y: 0}
+		mousePosition: { x: 0, y: 0 }
 	}
-	
+
 	// initializes all the keyboard states
-	var Pinput = function() {
+	var Pinput = function () {
 		// creates arrays to store information about the state of 
 		// each of the keys. true if pressed, false otherwise. the
 		// *previousKeyStates* array is used to store the state of 
@@ -51,24 +51,24 @@ var Pinput = (function() {
 	var isFireFox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 
 	// removes all whitespace from a given string.
-	var removeWhiteSpace = function(string) {
+	var removeWhiteSpace = function (string) {
 		var input = input + "";
 		return string.replace(/\s+/, '');
 	};
 
 	// replaces all consecutive instances of whitespace in a given
 	// string with one space.
-	var stripWhiteSpace = function(string) {
+	var stripWhiteSpace = function (string) {
 		var input = input + "";
 		return string.replace(/\s+/, ' ');
 	};
 
 	// converts a string to a keycode
-	var convertStringToKeycode = function(key) {
+	var convertStringToKeycode = function (key) {
 		var key = removeWhiteSpace(key);
 		key = key.toUpperCase();
 
-		switch(key) {
+		switch (key) {
 			case "BACKSPACE":
 				return ['key', 8];
 			case "SPACEBAR":
@@ -99,7 +99,7 @@ var Pinput = (function() {
 				return ['key', 38];
 			case "ARROWDOWN":
 				return ['key', 40];
-			case "INSERT": 
+			case "INSERT":
 				return ['key', 45];
 			case "DELETE":
 				return ['key', 46];
@@ -125,7 +125,7 @@ var Pinput = (function() {
 
 	// converts a string of space separated keys to an array
 	// of keycodes which can be used to check their states
-	var convertStringToKeyCombo = function(keyCombo) {
+	var convertStringToKeyCombo = function (keyCombo) {
 		var keyComboString = stripWhiteSpace(keyCombo);
 		var combo = keyComboString.split(' ');
 
@@ -136,11 +136,10 @@ var Pinput = (function() {
 	};
 
 	// same as *convertStringToKeyCombo* but with mouse buttons
-	var convertStringToButtonCode = function(buttonCode) {
-		var code = removeWhiteSpace(buttonCode);
-		code = code.toUpperCase();
-		
-		switch(buttonCode) {
+	var convertStringToButtonCode = function (buttonCode) {
+		var code = removeWhiteSpace(buttonCode).toUpperCase();
+
+		switch (code) {
 			case "MOUSELEFT":
 				return ['mouse', 0];
 			case "MOUSEMIDDLE":
@@ -152,14 +151,14 @@ var Pinput = (function() {
 		}
 	};
 
-	var convertStringToCombo = function(combo) {
+	var convertStringToCombo = function (combo) {
 		var combo = stripWhiteSpace(combo);
 		var tokens = combo.split(' ');
 		var keysAndButtons = [];
 
 		for (var i = 0; i < tokens.length; i++) {
 			var code = convertStringToButtonCode(tokens[i]);
-			
+
 			if (code != null) {
 				keysAndButtons.push(code)
 			}
@@ -171,7 +170,7 @@ var Pinput = (function() {
 		return keysAndButtons;
 	}
 
-	var checkCombo = function(combination, mouseStates, keyStates) {
+	var checkCombo = function (combination, mouseStates, keyStates) {
 		var combo = convertStringToCombo(combination);
 
 		for (var i = 0; i < combo.length; i++) {
@@ -190,7 +189,7 @@ var Pinput = (function() {
 	}
 
 	// initializes the *realState* with the default values
-	var init = function() {
+	var init = function () {
 		for (var i = 0; i < realState.keyStates.length; i++) {
 			realState.keyStates[i] = false;
 		}
@@ -201,43 +200,39 @@ var Pinput = (function() {
 	};
 
 	// checks whether the given key is down in the given array.
-	var isKeyDown = function(key, keyStateArray)
-	{
+	var isKeyDown = function (key, keyStateArray) {
 		var keyCode = convertStringToKeycode(key);
 		return keyStateArray[keyCode];
 	};
 
 	// same as *isKeyDown* but with mouse button
-	var isButtonDown = function(button, buttonStateArray)
-	{
+	var isButtonDown = function (button, buttonStateArray) {
 		var buttonCode = convertStringToButtonCode(button);
 		return buttonStateArray[buttonCode];
 	};
 
 	// checks if the key was clicked given an array of keystates and
 	// an array of previous key states
-	var isKeyClicked = function(key, currentKeyStateArray, previousKeyStateArray)
-	{
+	var isKeyClicked = function (key, currentKeyStateArray, previousKeyStateArray) {
 		return isKeyDown(key, currentKeyStateArray) && !isKeyDown(key, previousKeyStateArray);
 	};
 
 	// same as *isKeyClicked* but with mouse buttons
-	var isButtonClicked = function(key, currentButtonStateArray, previousButtonStateArray)
-	{
+	var isButtonClicked = function (key, currentButtonStateArray, previousButtonStateArray) {
 		return isButtonDown(key, currentButtonStateArray) && !isButtonDown(key, previousButtonStateArray);
 	};
 
-	Pinput.prototype.isReleased = function(combo) {
+	Pinput.prototype.isReleased = function (combo) {
 		return !checkCombo(combo, this.mouseStates, this.keyStates) &&
 			checkCombo(combo, this.previousMouseStates, this.previousKeyStates);
 	};
 
-	Pinput.prototype.isPressed = function(combo) {
+	Pinput.prototype.isPressed = function (combo) {
 		return checkCombo(combo, this.mouseStates, this.keyStates) &&
 			!checkCombo(combo, this.previousMouseStates, this.previousKeyStates);
 	};
 
-	Pinput.prototype.isDown = function(combo) {
+	Pinput.prototype.isDown = function (combo) {
 		if (this.useRealState) {
 			this.mousePosition.x = realState.mousePosition.x;
 			this.mousePosition.y = realState.mousePosition.y;
@@ -250,7 +245,7 @@ var Pinput = (function() {
 	// the previous key and mouse states are set to the current ones, and
 	// the current ones are set to reflect the actual state of the keyboard
 	// and mouse.
-	Pinput.prototype.update = function() {
+	Pinput.prototype.update = function () {
 		this.previousKeyStates = this.keyStates.slice(0);
 		this.keyStates = realState.keyStates.slice(0);
 
@@ -259,34 +254,34 @@ var Pinput = (function() {
 
 		this.lastMousePosition.x = this.mousePosition.x;
 		this.lastMousePosition.y = this.mousePosition.y;
-		
+
 		this.mousePosition.x = realState.mousePosition.x;
 		this.mousePosition.y = realState.mousePosition.y;
-	};	
+	};
 
 	// creates event handlers which update they real state with 
 	// values corresponding to the state of the mouse and the keyboard
 	// at the exact moment in time.
 
-	window.onkeydown = function(e) {
+	window.onkeydown = function (e) {
 		if (e.which == 18)
 			e.preventDefault();
 		realState.keyStates[e.which] = true;
 	};
 
-	window.onkeyup = function(e) {
+	window.onkeyup = function (e) {
 		realState.keyStates[e.which] = false;
 	};
 
-	window.onmousedown = function(e) {
+	window.onmousedown = function (e) {
 		realState.mouseStates[e.button] = true;
 	};
 
-	window.onmouseup = function(e) {
+	window.onmouseup = function (e) {
 		realState.mouseStates[e.button] = false;
 	};
 
-	window.onmousemove = function(e) {
+	window.onmousemove = function (e) {
 		realState.mousePosition.x = e.clientX;
 		realState.mousePosition.y = e.clientY;
 	}
